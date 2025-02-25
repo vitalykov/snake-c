@@ -1,0 +1,12 @@
+# Various executables
+*.out
+*.exe
+
+# Executables of this project
+build/snake
+
+# Object files and libraries
+*.o
+*.a
+*.so
+*.dll
