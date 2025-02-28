@@ -98,7 +98,6 @@ void MovePrint(int fd, int line, int column, char* message);
 Vector GetTerminalPos(int x, int y);
 void CleanInputBuffer(int fd);
 unsigned int RandomUnsignedInt(void);
-int Max(int arr[], int n);
 int Mod(int a, int b);
 int Abs(int a);
 int EqualVectors(Vector v1, Vector v2);
