@@ -5,22 +5,22 @@ sources = game.c
 BUILD_PATH = build
 EXECUTABLE = $(BUILD_PATH)/snake
 
-.PHONY := all
+.PHONY: all
 all: snake
 
-.PHONY += snake
+.PHONY: snake
 snake: $(EXECUTABLE)
 
 $(EXECUTABLE): $(sources)
 	$(CC) $(CC_FLAGS) $^ -o $@
 
-.PHONY += clean
+.PHONY: clean
 clean:
 	rm -rf *.o $(EXECUTABLE)
 
-.PHONY += rebuild
+.PHONY: rebuild
 rebuild: clean snake
 
-.PHONY += run
+.PHONY: run
 run: snake
 	$(EXECUTABLE)

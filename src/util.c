@@ -1,9 +1,10 @@
 #include "util.h"
 
+#include <unistd.h>
+
 unsigned int RandomUnsignedInt(void) {
     unsigned int result;
-    unsigned int* ptr = &result;
-    result = (unsigned int)ptr;
+    getentropy(&result, sizeof(result));
 
     return result;
 }
