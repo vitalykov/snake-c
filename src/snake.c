@@ -1,5 +1,8 @@
 #include "snake.h"
 
+#include "screen.h"
+#include "util.h"
+
 void InitSnake(Snake* snake) {
     Vector pos = {.x = WIDTH / 2, .y = HEIGHT / 2};
     Vector vel = {.x = 2, .y = 0};
@@ -32,6 +35,8 @@ void AppendSnakeSegment(Snake* snake) {
 void UpdateSnakeSpeed(Snake* snake, char input) {
     SnakeSegment* head = snake->segments;
     
+    // TODO. Make possible input with CAPS LOCK and maybe with russian layout
+
     if (input == 'w') {
         if (head->vel.x != 0) {
             head->vel.y = -Abs(head->vel.x) / 2;

@@ -39,7 +39,7 @@ void AppendInt(char* destination, int num) {
     if (num < 0) {
         num_str[i] = '-';
         ++i;
-        num -= num;
+        num = -num;
     }
 
     int l = i;

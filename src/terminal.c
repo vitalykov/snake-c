@@ -4,12 +4,10 @@
 #include <sys/ioctl.h>
 
 #include "strings.h"
+#include "screen.h"
 
 #define ICANON  0x00002
 #define ECHO    0x00008
-
-#define WIDTH 80
-#define HEIGHT 20
 
 #define CSI "\x1b["
 
@@ -45,6 +43,37 @@ void EnableNonBlockingMode(int fd) {
     ioctl(fd, TCSETS, &ioctl_params);
 }
 
+void InitializeScreen(int fd) {
+    EnableNonBlockingMode(fd);
+    AlternateScreenOn(fd);
+    ResizeTerminal(fd, HEIGHT, WIDTH);
+    HideCursor(fd);
+    MovePrint(fd, HEIGHT / 2, WIDTH / 2 - 5, "Initializing...");
+
+    sleep(1);
+
+    ClearTerminal(fd);
+}
+
+int ProcessInput(char *input, struct pollfd* readfds, int timeout) {
+    int ready = poll(readfds, 1, timeout);
+
+    if (ready == -1) {
+        MovePrint(STDERR_FD, 0, 0, "poll error");
+        return 0;
+    }
+
+    if (readfds[0].revents & POLLIN) {
+        int bytes_read = read(readfds[0].fd, input, 1);
+
+        if (bytes_read <= 0) {
+            MovePrint(STDERR_FD, 0, 0, "read error");
+        }
+    }
+
+    return 1;
+}
+
 void AlternateScreenOn(int fd) {
     char sequence[] = ALTERNATE_SCREEN_BUFFER_ON;
     write(fd, sequence, Length(sequence));
@@ -64,18 +93,6 @@ void RestoreTerminal(int fd) {
     AlternateScreenOff(fd);
     ShowCursor(fd);
     SetCursorStyle(fd, CURSOR_BLOCK, CURSOR_BLINKING);
-}
-
-void CleanInputBuffer(int fd) {
-    char c;
-    while (read(fd, &c, 1) > 0);
-}
-
-unsigned int RandomUnsignedInt(void) {
-    unsigned int result;
-    getentropy(&result, sizeof(result));
-
-    return result;
 }
 
 void ShowCursor(int fd) {
