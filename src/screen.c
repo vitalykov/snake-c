@@ -27,8 +27,6 @@ void DrawFrame(int fd, char* frame[HEIGHT][WIDTH]) {
     for (int row = 0; row < HEIGHT; ++row) {
         for (int col = 0; col < WIDTH; col += 2) {
             MovePrint(fd, row, col, frame[row][col]);
-            // MoveCursor(fd, row, col);
-            // write(fd, frame[row][col], Length(frame[row][col]));
         }
     }
 }

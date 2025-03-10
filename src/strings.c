@@ -2,7 +2,7 @@
 
 int Length(const char* str) {
     int length = 0;
-    
+
     while (str[length] != '\0') {
         ++length;
     }
@@ -27,12 +27,12 @@ void AppendString(char* destination, const char* str) {
     destination[dest_len + str_len] = '\0';
 }
 
-void AppendInt(char* destination, int num) {    
+void AppendInt(char* destination, int num) {
     if (num == 0) {
         AppendChar(destination, '0');
         return;
     }
-    
+
     char num_str[12];
     int i = 0;
 

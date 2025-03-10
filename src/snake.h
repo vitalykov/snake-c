@@ -32,4 +32,4 @@ void MoveSnake(Snake* snake);
 int IsOccupiedBySnake(int x, int y, Snake* snake);
 int SnakeEatYouself(Snake* snake);
 
-#endif // SNAKE_H
+#endif  // SNAKE_H

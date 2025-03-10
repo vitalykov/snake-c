@@ -1,13 +1,13 @@
 #include "terminal.h"
 
-#include <unistd.h>
 #include <sys/ioctl.h>
+#include <unistd.h>
 
-#include "strings.h"
 #include "screen.h"
+#include "strings.h"
 
-#define ICANON  0x00002
-#define ECHO    0x00008
+#define ICANON 0x00002
+#define ECHO 0x00008
 
 #define CSI "\x1b["
 
@@ -55,7 +55,7 @@ void InitializeScreen(int fd) {
     ClearTerminal(fd);
 }
 
-int ProcessInput(char *input, struct pollfd* readfds, int timeout) {
+int ProcessInput(char* input, struct pollfd* readfds, int timeout) {
     int ready = poll(readfds, 1, timeout);
 
     if (ready == -1) {

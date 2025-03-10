@@ -15,4 +15,4 @@ typedef struct Food Food;
 
 Food GenerateFood(Snake *snake);
 
-#endif // FOOD_H
+#endif  // FOOD_H

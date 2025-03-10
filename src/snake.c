@@ -16,12 +16,12 @@ void InitSnake(Snake* snake) {
 
 void AppendSnakeSegment(Snake* snake) {
     SnakeSegment last_segment = snake->segments[snake->length - 1];
-    
+
     SnakeSegment segment;
     segment.pos.x = Mod(last_segment.pos.x - last_segment.vel.x, WIDTH);
     segment.pos.y = Mod(last_segment.pos.y - last_segment.vel.y, HEIGHT);
     segment.vel = last_segment.vel;
-    
+
     if (snake->length == 1) {
         segment.symbol = YELLOW_CIRCLE;
     } else {
@@ -34,7 +34,7 @@ void AppendSnakeSegment(Snake* snake) {
 
 void UpdateSnakeSpeed(Snake* snake, char input) {
     SnakeSegment* head = snake->segments;
-    
+
     // TODO. Make possible input with CAPS LOCK and maybe with russian layout
 
     if (input == 'w') {

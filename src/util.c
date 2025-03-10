@@ -1,10 +1,17 @@
 #include "util.h"
 
+#include <fcntl.h>
 #include <unistd.h>
 
 unsigned int RandomUnsignedInt(void) {
     unsigned int result;
-    getentropy(&result, sizeof(result));
+    int fd = open("/dev/urandom", O_RDONLY);
+
+    if (fd == -1) {
+        return 0;
+    }
+
+    read(fd, &result, sizeof(result));
 
     return result;
 }

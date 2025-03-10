@@ -1,7 +1,7 @@
 #include "food.h"
 
-#include "util.h"
 #include "screen.h"
+#include "util.h"
 
 Food GenerateFood(Snake* snake) {
     int x = (RandomUnsignedInt() << 1) % WIDTH;

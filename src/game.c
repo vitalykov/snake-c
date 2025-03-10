@@ -1,10 +1,10 @@
 #include <unistd.h>
 
-#include "terminal.h"
-#include "strings.h"
 #include "food.h"
-#include "snake.h"
 #include "screen.h"
+#include "snake.h"
+#include "strings.h"
+#include "terminal.h"
 #include "util.h"
 #include "vector2d.h"
 
@@ -41,8 +41,8 @@ int main(void) {
 
             sleep(2);
             break;
-        } 
-    
+        }
+
         if (EqualVectors(snake.segments[0].pos, food.pos)) {
             food = GenerateFood(&snake);
             AppendSnakeSegment(&snake);

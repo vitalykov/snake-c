@@ -11,4 +11,4 @@ int Mod(int a, int b);
 /*Absolute value of the integer*/
 int Abs(int a);
 
-#endif // UTIL_H
+#endif  // UTIL_H

@@ -14,7 +14,7 @@
 
 void EnableNonBlockingMode(int fd);
 void InitializeScreen(int fd);
-int ProcessInput(char *input, struct pollfd* readfds, int timeout);
+int ProcessInput(char* input, struct pollfd* readfds, int timeout);
 void AlternateScreenOn(int fd);
 void AlternateScreenOff(int fd);
 void RestoreTerminal(int fd);
@@ -26,4 +26,4 @@ void MoveCursor(int fd, int line, int column);
 void SetCursorStyle(int fd, int style, int is_blinking);
 void MovePrint(int fd, int line, int column, char* message);
 
-#endif // TERMINAL_H
+#endif  // TERMINAL_H
